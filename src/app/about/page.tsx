@@ -49,29 +49,22 @@ export default function AboutPage() {
           <h2 className="mb-4 text-2xl font-semibold">Career Highlights</h2>
           <ul className="space-y-4">
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🚀 Drove prototyping and implementation of <strong>AI-powered solutions</strong>
-              (recommendation engines, chatbots) that improved customer experience and delivered
-              measurable efficiency gains.
+              🚀 Prototyped and delivered <strong>AI-powered solutions</strong> (chatbots, recommendation engines) driving efficiency gains.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              💰 Owned full <strong>product portfolio and P&amp;L responsibility</strong>, managing
-              multimillion-euro budgets and ensuring profitable growth through strategic roadmap decisions.
+              💰 Owned <strong>portfolio &amp; P&amp;L</strong>, managing multimillion-euro budgets and profitable growth.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🧭 Led <strong>large-scale product transformation</strong> initiatives such as the Salesforce Help
-              Portal, impacting thousands of users and aligning global cross-functional teams.
+              🧭 Led <strong>global product transformation</strong> (Salesforce Help Portal) impacting thousands of users.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              👥 <strong>Managed and mentored teams</strong> of Product Owners and contributors, building
-              high-performing teams that delivered complex programs on time.
+              👥 <strong>Managed and mentored teams</strong> of Product Owners to deliver complex programs on time.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🌍 Defined and executed <strong>go-to-market strategies</strong> for new products and features,
-              building partnerships and driving adoption across international markets.
+              🌍 Executed <strong>go-to-market strategies</strong> for new products, driving adoption across markets.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🤝 Partnered with <strong>executives and global stakeholders</strong> to align strategy,
-              secure investment, and deliver outcomes tied to corporate goals.
+              🤝 Partnered with <strong>executives and stakeholders</strong> to align strategy and secure investment.
             </li>
           </ul>
         </div>
