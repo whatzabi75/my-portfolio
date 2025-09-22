@@ -26,7 +26,7 @@ export default function AboutPage() {
           <p className="text-lg leading-relaxed text-gray-800">
             I’m a <strong>Senior Product Manager</strong> with deep experience in
             building software products and an active focus on{" "}
-            <strong>AI-powered solutions</strong>. I lead cross-functional teams,
+            <strong>AI-powered solutions</strong>. I lead a team of Product Owners,
             align stakeholders, and ship measurable outcomes—balancing strategy,
             execution, and customer value.
           </p>
@@ -42,45 +42,63 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Skills */}
-      <div className="mt-12">
-        <h2 className="mb-4 text-2xl font-semibold">Skills</h2>
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {[
-            "Product Strategy & Roadmapping",
-            "AI & Machine Learning Applications",
-            "Leadership & People Management",
-            "Agile (Scrum, Kanban)",
-            "Data-Driven Decision Making",
-            "Stakeholder Management",
-          ].map((item) => (
-            <li
-              key={item}
-              className="rounded-lg border bg-gray-800 text-white px-4 py-3 text-sm"
-            >
-              {item}
+      {/* Skills & Career Highlights in two-column grid */}
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Career Highlights */}
+        <div>
+          <h2 className="mb-4 text-2xl font-semibold">Career Highlights</h2>
+          <ul className="space-y-4">
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              🚀 Drove prototyping and implementation of <strong>AI-powered solutions</strong>
+              (recommendation engines, chatbots) that improved customer experience and delivered
+              measurable efficiency gains.
             </li>
-          ))}
-        </ul>
-      </div>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              💰 Owned full <strong>product portfolio and P&amp;L responsibility</strong>, managing
+              multimillion-euro budgets and ensuring profitable growth through strategic roadmap decisions.
+            </li>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              🧭 Led <strong>large-scale product transformation</strong> initiatives such as the Salesforce Help
+              Portal, impacting thousands of users and aligning global cross-functional teams.
+            </li>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              👥 <strong>Managed and mentored teams</strong> of Product Owners and contributors, building
+              high-performing teams that delivered complex programs on time.
+            </li>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              🌍 Defined and executed <strong>go-to-market strategies</strong> for new products and features,
+              building partnerships and driving adoption across international markets.
+            </li>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              🤝 Partnered with <strong>executives and global stakeholders</strong> to align strategy,
+              secure investment, and deliver outcomes tied to corporate goals.
+            </li>
+          </ul>
+        </div>
 
-      {/* Career Highlights */}
-      <div className="mt-12">
-        <h2 className="mb-4 text-2xl font-semibold">Career Highlights</h2>
-        <ul className="space-y-4">
-          <li className="rounded-lg border bg-gray-100 px-4 py-4">
-            🚀 Led AI customer-support initiatives delivering a{" "}
-            <strong>20% increase in case deflection</strong>.
-          </li>
-          <li className="rounded-lg border bg-gray-100 px-4 py-4">
-            🧭 Drove product strategy for a large help-portal transformation used
-            by thousands of users.
-          </li>
-          <li className="rounded-lg border bg-gray-100 px-4 py-4">
-            👥 Managed & mentored Product Owners; shipped multiple cross-team
-            projects on time.
-          </li>
-        </ul>
+        {/* Skills */}
+        <div>
+          <h2 className="mb-4 text-2xl font-semibold">Skills</h2>
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {[
+              "Product Strategy & Roadmapping",
+              "AI & Machine Learning Applications",
+              "Leadership & People Management",
+              "Portfolio & P&L Ownership",
+              "Go-to-Market Strategy & Business Development",
+              "Agile & Cross-Functional Team Leadership",
+              "Stakeholder & Executive Communication",
+              "Data-Driven Decision Making",
+            ].map((item) => (
+              <li
+                key={item}
+                className="rounded-lg bg-blue-600 text-white px-4 py-3 text-sm font-medium shadow hover:bg-blue-700 transition"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

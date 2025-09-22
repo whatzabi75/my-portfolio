@@ -1,10 +1,82 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function ProjectsPage() {
+  const projects = [
+    {
+      title: "AI Chatbot Assistant",
+      description: "An AI-powered chatbot that helps users find answers in a knowledge base using natural language.",
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "Python"],
+      image: "/project-placeholder.jpg",
+      link: "https://github.com/username/project1",
+    },
+    {
+      title: "Portfolio Website",
+      description: "A modern portfolio website to showcase Product Management and AI projects.",
+      tech: ["React", "Next.js", "Tailwind CSS"],
+      image: "/project-placeholder.jpg",
+      link: "https://github.com/username/project2",
+    },
+    {
+      title: "Stock Market Analyzer",
+      description: "Tool that visualizes and analyzes stock data with AI-driven insights.",
+      tech: ["Python", "Pandas", "Matplotlib"],
+      image: "/project-placeholder.jpg",
+      link: "https://github.com/username/project3",
+    },
+  ];
+
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold text-blue-600">Projects</h1>
-      <p className="mt-4 text-lg text-gray-700">
-        Here you’ll find my portfolio projects, including AI mini-tools.
-      </p>
-    </main>
+    <section className="max-w-6xl mx-auto px-6 py-12">
+      <h1 className="text-3xl font-bold mb-8 text-center">Projects</h1>
+
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="border rounded-lg shadow-sm overflow-hidden bg-white flex flex-col"
+          >
+            {/* Thumbnail */}
+            <div className="relative w-full h-48">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 p-4 flex flex-col">
+              <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
+              <p className="text-gray-700 text-sm mb-4 flex-1">
+                {project.description}
+              </p>
+
+              {/* Tech stack */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Link */}
+              <Link
+                href={project.link}
+                target="_blank"
+                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition"
+              >
+                View Project →
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
