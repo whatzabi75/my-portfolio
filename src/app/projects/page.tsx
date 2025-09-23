@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function ProjectsPage() {
   const projects = [
     {
-      title: "AI Chatbot Assistant",
-      description: "An AI-powered chatbot that helps users find answers in a knowledge base using natural language.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS", "Python"],
+      title: "Emotion Detection",
+      description: "A Python tool that analyzes emotions in text using ML.",
+      tech: ["Python", "Flask", "NLP"],
       image: "/project-placeholder.jpg",
       link: "https://github.com/username/project1",
     },
