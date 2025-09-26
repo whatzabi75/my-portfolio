@@ -6,10 +6,11 @@ export default function ProjectsPage() {
     {
       title: "Emotion Detection",
       description: "A Python tool that analyzes emotions in text using ML.",
-      tech: ["Python", "Flask", "NLP"],
-      image: "/project-placeholder.jpg",
-      link: "https://github.com/username/project1",
+      tech: ["Python", "Flask", "NLP", "Hugging Face Emotion Model"],
+      image: "/emotion-detection-placeholder.jpg",
+      link: "/projects/emotion-detector",
     },
+    /*
     {
       title: "Portfolio Website",
       description: "A modern portfolio website to showcase Product Management and AI projects.",
@@ -24,6 +25,7 @@ export default function ProjectsPage() {
       image: "/project-placeholder.jpg",
       link: "https://github.com/username/project3",
     },
+    */
   ];
 
   return (
