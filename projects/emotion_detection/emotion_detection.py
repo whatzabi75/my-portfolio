@@ -5,7 +5,7 @@ from transformers import pipeline
 emotion_pipeline = pipeline(
     "text-classification",
     model="j-hartmann/emotion-english-distilroberta-base",
-    return_all_scores=True,
+    top_k=None,
 )
 
 def _none_payload():

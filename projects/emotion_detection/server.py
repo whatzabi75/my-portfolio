@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from emotion_detection import emotion_detector  # adjust import to your function
@@ -9,6 +10,7 @@ CORS(app)
 def analyze():
     data = request.get_json()
     text = data.get("text", "")
+    
     if not text:
         return jsonify({"error": "No text provided"}), 400
 
@@ -16,4 +18,5 @@ def analyze():
     return jsonify(emotion)
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=5000, debug=True)
