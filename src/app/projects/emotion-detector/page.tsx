@@ -19,8 +19,7 @@ export default function EmotionDetectorPage() {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:5000/analyze", {
-        // later we’ll replace with deployed Python URL (Render, Railway, HuggingFace)
+      const response = await fetch("https://backend-code-production-77c7.up.railway.app/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: inputText }),
