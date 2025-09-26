@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-type EmotionResults = {
+type EmotionResult = {
+  dominant_emotion: string;
   scores: Record<string, number>;
-  dominant_emotion: string | null;
-  recommendation?: string | null;
+  recommendation?: string; // optional
 };
 
 export default function EmotionDetectorPage() {
@@ -28,6 +28,7 @@ export default function EmotionDetectorPage() {
       const data = await response.json();
       setResult(data);
     } catch (error) {
+      console.error(error);
       setResult(null);
     } finally {
       setLoading(false);
