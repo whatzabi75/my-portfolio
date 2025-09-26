@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from EmotionDetection.emotion_detection import emotion_detector  # adjust import to your function
+from emotion_detection import emotion_detector  # adjust import to your function
 
 app = Flask(__name__)
 CORS(app)
