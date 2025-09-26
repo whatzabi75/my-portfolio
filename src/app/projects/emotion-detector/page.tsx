@@ -43,7 +43,11 @@ export default function EmotionDetectorPage() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <label className="block text-lg font-medium mb-2">
-          Please input your text
+          This tool detects emotions in text using a machine learning model. Applicable use cases include sentiment analysis in Customer Service messages, Product Reviews, Social Media Posts or Employee Feedback.
+          Depending on the detected emotion, it can provide recommendations for responses or actions.
+<br></br>
+<br></br>
+          Type in a text such as a disgruntled customer message to see the detected emotions and recommendations.
         </label>
         <textarea
           className="w-full rounded border px-4 py-2 text-gray-900 shadow-sm focus:ring-2 focus:ring-blue-500"
@@ -74,17 +78,20 @@ export default function EmotionDetectorPage() {
               📌 Recommendation: {result.recommendation}
             </p>
           )}
-          <ul className="list-disc ml-6 space-y-1">
-            {Object.entries(result.scores)
-              .sort((a, b) => b[1] - a[1])
-              .slice(0, 10)
-              .map(([label, score]) => (
-                <li key={label} className="text-gray-800">
-                  {label.charAt(0).toUpperCase() + label.slice(1)}:{" "}
-                  {Number(score).toFixed(3)}
-                </li>
-              ))}
-          </ul>
+          <div className="mt-4">
+            <p className="text-lg font-medium text-gray-800 mb-2">Detailed Value Breakdown:</p>
+            <ul className="text-lg font-medium text-gray-800 list-disc pl-6 space-y-1">
+              {Object.entries(result.scores)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10)
+                .map(([label, score]) => (
+                  <li key={label} className="text-gray-800">
+                    {label.charAt(0).toUpperCase() + label.slice(1)}:{" "}
+                    {Number(score).toFixed(3)}
+                  </li>
+                ))}
+            </ul>
+          </div>
         </div>
       )}
     </section>
