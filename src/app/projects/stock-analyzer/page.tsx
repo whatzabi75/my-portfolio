@@ -17,11 +17,16 @@ export default function StockAnalyzerPage() {
   const [stockData, setStockData] = useState<{ date: string; close: number }[]>([]);
   
 
-  // Live data
-  const [companySummary, setCompanySummary] = useState("");
-  const [column1, setColumn1] = useState<{ label: string; value: string | number | null }[]>([]);
-  const [column2, setColumn2] = useState<{ label: string; value: string | number | null }[]>([]);
-  const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 });
+type FinancialItem = {
+  label: string;
+  value: string | number | null;
+};
+
+// Live data
+const [companySummary, setCompanySummary] = useState("");
+const [column1, setColumn1] = useState<FinancialItem[]>([]);
+const [column2, setColumn2] = useState<FinancialItem[]>([]);
+const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 });
 
 
   const handleSubmit = async (e: React.FormEvent) => {
