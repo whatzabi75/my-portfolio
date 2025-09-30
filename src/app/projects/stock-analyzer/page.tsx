@@ -19,8 +19,8 @@ export default function StockAnalyzerPage() {
 
   // Live data
   const [companySummary, setCompanySummary] = useState("");
-  const [column1, setColumn1] = useState<any[]>([]);
-  const [column2, setColumn2] = useState<any[]>([]);
+  const [column1, setColumn1] = useState<{ label: string; value: string | number | null }[]>([]);
+  const [column2, setColumn2] = useState<{ label: string; value: string | number | null }[]>([]);
   const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 });
 
 
