@@ -17,44 +17,39 @@ export default function StockAnalyzerPage() {
   const [stockData, setStockData] = useState<{ date: string; close: number }[]>([]);
   
 
-  // Placeholder data
-  const companySummary =
-    "Apple Inc. is a global technology company that designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories. It also sells a variety of software, services, and digital content. Apple’s flagship product, the iPhone, accounts for a major share of its revenue, complemented by the Mac, iPad, Apple Watch, and services like iCloud, Apple Music, and the App Store. The company is known for its strong ecosystem that encourages customer loyalty and repeat purchases. Apple invests heavily in research and development, with a focus on areas such as silicon design, augmented reality, and artificial intelligence. With a global supply chain and extensive retail presence, Apple maintains a leading position in consumer electronics. The company is also focused on sustainability, aiming for carbon neutrality across its entire business and manufacturing supply chain by 2030.";
-
-  const column1 = [
-    { label: "Price-to-Earnings (P/E)", value: "28.5" },
-    { label: "Price-to-Book (P/B)", value: "7.2" },
-    { label: "Price-to-Sales (P/S)", value: "6.5" },
-    { label: "Price-to-Earnings-Growth (PEG)", value: "1.8" },
-    { label: "P/E Relative to Industry", value: "1.2x" },
-    { label: "Free Cash Flow (FCF) Yield", value: "3.5%" },
-    { label: "Earnings Per Share (EPS)", value: "$6.12" },
-    { label: "Return on Equity (ROE)", value: "49.8%" },
-    { label: "Return on Assets (ROA)", value: "12.5%" },
-    { label: "Return on Capital Employed (ROCE)", value: "27.3%" },
-  ];
-
-  const column2 = [
-    { label: "Gross Profit Margin", value: "46.7%" },
-    { label: "Operating Margin", value: "32.5%" },
-    { label: "Net Profit Margin", value: "25.1%" },
-    { label: "Debt-to-Equity (D/E)", value: "1.5" },
-    { label: "Debt-to-Asset", value: "0.45" },
-    { label: "Interest Coverage", value: "12.3x" },
-    { label: "Revenue Growth Rate", value: "7.8%" },
-    { label: "EPS Growth Rate", value: "9.4%" },
-    { label: "Dividend Yield", value: "0.55%" },
-    { label: "Asset Turnover", value: "1.2x" },
-  ];
-
-  const analystRatings = { buy: 22, hold: 5, sell: 3 };
+  // Live data
+  const [companySummary, setCompanySummary] = useState("");
+  const [column1, setColumn1] = useState<any[]>([]);
+  const [column2, setColumn2] = useState<any[]>([]);
+  const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 });
 
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    await fetchStockHistory(symbol, "6mo");
-  };
+  e.preventDefault();
+  setSubmitted(true);
+
+  try {
+    const res = await fetch("https://backend-code-production-77c7.up.railway.app/stock-analyzer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ symbol, range }),
+    });
+
+    if (!res.ok) throw new Error("Backend error");
+
+    const data = await res.json();
+
+    // Map backend JSON to state
+    setCompanySummary(data.company_summary || "");
+    const entries = Object.entries(data.financials || {});
+    setColumn1(entries.slice(0, 10).map(([label, value]) => ({ label, value })));
+    setColumn2(entries.slice(10, 20).map(([label, value]) => ({ label, value })));
+    setAnalystRatings(data.analyst_ratings || { buy: 0, hold: 0, sell: 0 });
+    setStockData(data.history || []);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   // Dynamic stock history display in chart
 
@@ -62,7 +57,7 @@ export default function StockAnalyzerPage() {
     if (!symbol) return;
 
     try {
-      const res = await fetch("https://backend-code-production-77c7.up.railway.app/stock-analyzer/history", {
+      const res = await fetch("https://backend-code-production-77c7.up.railway.app/stock-analyzer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ symbol, range }),
@@ -71,20 +66,16 @@ export default function StockAnalyzerPage() {
       if (!res.ok) throw new Error("Backend not ready");
       
       const data = await res.json();
-
-      // Expecting backend to return: [{ date: "2025-01-01", close: 150 }, ...]
-
       setStockData(data.history || []);
     } catch (err) {
       console.warn("Using fallback data because backend is not ready:", err);
-    setStockData([
-      { date: "2025-01-01", close: 150 },
-      { date: "2025-02-01", close: 160 },
-      { date: "2025-03-01", close: 170 },
-      { date: "2025-04-01", close: 165 },
-      { date: "2025-05-01", close: 180 },
-    ]);
-    
+      setStockData([
+        { date: "2025-01-01", close: 150 },
+        { date: "2025-02-01", close: 160 },
+        { date: "2025-03-01", close: 170 },
+        { date: "2025-04-01", close: 165 },
+        { date: "2025-05-01", close: 180 },
+      ]);
     }
   };
 
