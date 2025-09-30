@@ -125,6 +125,10 @@ const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 
         </button>
       </form>
 
+      <p className="text-xs text-gray-500 mt-2 text-center">
+         ⏳ Data retrieval might take a few seconds...
+      </p>
+
       {submitted && (
         <div className="space-y-8">
           {/* Company Overview */}
