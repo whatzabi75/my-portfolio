@@ -16,6 +16,7 @@ export default function StockAnalyzerPage() {
   const [range, setRange] = useState("6mo");
   const [stockData, setStockData] = useState<{ date: string; close: number }[]>([]);
   
+  const [verdict, setVerdict] = useState("");
 
 type FinancialItem = {
   label: string;
@@ -43,6 +44,8 @@ const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 
     if (!res.ok) throw new Error("Backend error");
 
     const data = await res.json();
+
+    setVerdict(data.verdict || "");
 
     // Map backend JSON to state
     setCompanySummary(data.company_summary || "");
@@ -235,6 +238,16 @@ const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 
               })()}
             </div>
           </div>
+
+          {/* LLM Verdict */}
+          {verdict && (
+              <div className="p-6 rounded-lg border bg-gray-50 shadow-sm">
+              <h2 className="text-xl font-semibold mb-2">AI Stock Verdict</h2>
+              <p className="text-gray-800 text-sm leading-relaxed">
+                 {verdict}
+              </p>
+              </div>
+          )}
 
           {/* Disclaimer */}
           <p className="text-xs text-gray-500 text-center mt-10">
