@@ -47,9 +47,21 @@ const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 
     // Map backend JSON to state
     setCompanySummary(data.company_summary || "");
     const entries = Object.entries(data.financials || {});
-    setColumn1(entries.slice(0, 10).map(([label, value]) => ({ label, value })));
-    setColumn2(entries.slice(10, 20).map(([label, value]) => ({ label, value })));
-    setAnalystRatings(data.analyst_ratings || { buy: 0, hold: 0, sell: 0 });
+
+   // ✅ Explicitly cast value
+   setColumn1(
+      entries.slice(0, 10).map(([label, value]) => ({
+         label,
+         value: value as string | number | null,
+      }))
+  );
+
+   setColumn2(
+      entries.slice(10, 20).map(([label, value]) => ({
+         label,
+         value: value as string | number | null,
+      }))
+  );
     setStockData(data.history || []);
   } catch (err) {
     console.error(err);
