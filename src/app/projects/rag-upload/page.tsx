@@ -18,8 +18,8 @@ export default function RagDeploymentPage() {
         setFile(null);
         return;
       }
-      if (selectedFile.size > 20 * 1024 * 1024) {
-        alert("File size exceeds 20MB limit.");
+      if (selectedFile.size > 16 * 1024 * 1024) {
+        alert("File size exceeds 16MB limit.");
         e.target.value = "";
         setFile(null);
         return;
@@ -77,7 +77,7 @@ export default function RagDeploymentPage() {
     <section className="mx-auto max-w-4xl bg-white text-gray-900 px-6 py-12">
       <h2 className="text-2xl font-semibold mb-4 text-center">RAG based custom LLM</h2>
       <p className="text-sm text-gray-600 mb-6 text-center">
-        Please upload a file in PDF format (size limit 20MB)
+        Please upload a file in PDF format (size limit 16MB)
       </p>
 
       <div className="flex justify-center gap-4 mb-6">
