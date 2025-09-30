@@ -5,27 +5,18 @@ export default function ProjectsPage() {
   const projects = [
     {
       title: "Emotion Detection",
-      description: "A Python tool that analyzes emotions in text using ML.",
-      tech: ["Python", "Flask", "NLP", "Hugging Face Emotion Model"],
-      image: "/emotion-detection-placeholder.jpg",
+      description: "A Python tool that analyzes emotions in text using a DistilRoBERTa Transformer model fine-tuned on emotion classification, provided via Hugging Face.",
+      tech: ["Python", "Flask", "NLP", "DistilRoBERTa Emotion Model"],
+      image: "/emotion-detection.jpg",
       link: "/projects/emotion-detector",
-    },
-    /*
-    {
-      title: "Portfolio Website",
-      description: "A modern portfolio website to showcase Product Management and AI projects.",
-      tech: ["React", "Next.js", "Tailwind CSS"],
-      image: "/project-placeholder.jpg",
-      link: "https://github.com/username/project2",
     },
     {
       title: "Stock Market Analyzer",
-      description: "Tool that visualizes and analyzes stock data with AI-driven insights.",
-      tech: ["Python", "Pandas", "Matplotlib"],
-      image: "/project-placeholder.jpg",
-      link: "https://github.com/username/project3",
+      description: "A Python tool that visualizes and analyzes stock data. It fetches historical stock data using yfinance and provides insights using the OpenAI GPT-4o-mini LLM, all wrapped in a Next.js frontend.",
+      tech: ["Python", "yfinance", "Hugging Face LLM", "Next.js"],
+      image: "/stock-analyzer.jpg",
+      link: "/projects/stock-analyzer",
     },
-    */
   ];
 
   return (
