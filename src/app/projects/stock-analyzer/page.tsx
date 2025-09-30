@@ -82,7 +82,7 @@ export default function StockAnalyzerPage() {
   return (
     <section className="mx-auto max-w-6xl bg-white text-gray-900 px-6 py-12">
       <h1 className="text-3xl font-bold mb-6 text-center">
-        📊 Stock Market Analyzer
+        📊 Stock Market Analyzer (v2)
       </h1>
 
       {/* Search Bar */}
