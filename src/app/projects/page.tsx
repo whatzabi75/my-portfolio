@@ -13,9 +13,16 @@ export default function ProjectsPage() {
     {
       title: "Stock Market Analyzer",
       description: "A Python tool that visualizes and analyzes stock data. It fetches historical stock data using yfinance and provides insights using the OpenAI GPT-4o-mini LLM, all wrapped in a Next.js frontend.",
-      tech: ["Python", "yfinance", "Hugging Face LLM", "Next.js"],
+      tech: ["Python", "yfinance", "GPT-4o-mini", "Next.js"],
       image: "/stock-analyzer.jpg",
       link: "/projects/stock-analyzer",
+    },
+        {
+      title: "Custom LLM Chatbot",
+      description: "A Python tool that trains a RAG-based chatbot using custom documents. It leverages LangChain for document processing and integrates with a Hugging Face LLM for generating responses, all presented in a Next.js frontend.",
+      tech: ["Python", "Flask", "PyPDF2", "VectorDB", "GPT-4o-mini", "LangChain retriever"],
+      image: "/rag-deployment.jpg",
+      link: "/projects/rag-deployment",
     },
   ];
 
