@@ -36,34 +36,69 @@ export default function RagDeploymentPage() {
     alert(`File "${file.name}" is ready to be submitted.`);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!file) {
       alert("Please upload a PDF file before submitting.");
       return;
     }
     setIsTraining(true);
     setIsTrained(false);
-    // Simulate training for 3 seconds
-    setTimeout(() => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      // Replace the URL below with your Flask backend endpoint
+      const response = await fetch("http://backend-code-production-77c7.up.railway.app/rag-upload", {
+        method: "POST",
+        body: formData,
+        // Do not set Content-Type header; browser will set it for multipart/form-data
+      });
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(`Upload failed: ${errText}`);
+      }
       setIsTraining(false);
       setIsTrained(true);
-    }, 3000);
+    } catch (error: any) {
+      setIsTraining(false);
+      setIsTrained(false);
+      alert(error.message || "An error occurred during upload.");
+    }
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
     const userMessage = inputValue.trim();
     setChatHistory((prev) => [...prev, { user: userMessage, bot: "..." }]);
     setInputValue("");
 
-    // Simulate bot response after 1.5 seconds
-    setTimeout(() => {
+    try {
+      // Replace the URL below with your Flask backend endpoint
+      const response = await fetch("http://localhost:5000/rag-chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: userMessage })
+      });
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(`Chat request failed: ${errText}`);
+      }
+      const data = await response.json();
+      const answer = data.answer || "No answer returned from backend.";
       setChatHistory((prev) => {
         const newHistory = [...prev];
-        newHistory[newHistory.length - 1].bot = "This is a simulated response related to your uploaded file.";
+        newHistory[newHistory.length - 1].bot = answer;
         return newHistory;
       });
-    }, 1500);
+    } catch (error: any) {
+      setChatHistory((prev) => {
+        const newHistory = [...prev];
+        newHistory[newHistory.length - 1].bot =
+          error.message || "An error occurred while fetching the answer.";
+        return newHistory;
+      });
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
