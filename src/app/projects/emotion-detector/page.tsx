@@ -42,7 +42,7 @@ export default function EmotionDetectorPage() {
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="block text-lg font-medium mb-2">
+        <label className="text-sm text-gray-600 mb-6 text-center">
           This tool detects emotions in text using a machine learning model. Applicable use cases include sentiment analysis in Customer Service messages, Product Reviews, Social Media Posts or Employee Feedback.
           Depending on the detected emotion, it can provide recommendations for responses or actions.
 <br></br>

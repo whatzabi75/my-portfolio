@@ -104,6 +104,9 @@ const [analystRatings, setAnalystRatings] = useState({ buy: 0, hold: 0, sell: 0 
       <h1 className="text-3xl font-bold mb-6 text-center">
         📊 Stock Market Analyzer (v2)
       </h1>
+      <p className="text-sm text-gray-600 mb-6 text-center">
+        Please enter a stock symbol (e.g., AAPL for Apple Inc.) to retrieve the latest financial data, stock price history, analyst ratings, <br></br>and an AI-generated verdict on the stock's potential.
+      </p>
 
       {/* Search Bar */}
       <form
