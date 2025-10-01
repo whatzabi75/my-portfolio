@@ -9,6 +9,7 @@ export default function RagDeploymentPage() {
   const [isTrained, setIsTrained] = useState(false);
   const [chatHistory, setChatHistory] = useState<{ user: string; bot: string }[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [uploadMessage, setUploadMessage] = useState("");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -31,10 +32,10 @@ export default function RagDeploymentPage() {
 
   const handleUpload = () => {
     if (!file) {
-      alert("Please select a PDF file to upload.");
+      setUploadMessage("Please select a PDF file to upload.");
       return;
     }
-    alert(`File "${file.name}" is ready to be submitted.`);
+    setUploadMessage("The upload was successful");
   };
 
   const handleSubmit = async () => {
@@ -47,7 +48,6 @@ export default function RagDeploymentPage() {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      // Replace the URL below with your Flask backend endpoint
         const response = await fetch(`${BACKEND_URL}/rag-upload`, {
         method: "POST",
         body: formData,
@@ -74,7 +74,6 @@ export default function RagDeploymentPage() {
     setInputValue("");
 
     try {
-      // Replace the URL below with your Flask backend endpoint
         const response = await fetch(`${BACKEND_URL}/rag-chat`, {
         method: "POST",
         headers: {
@@ -116,21 +115,37 @@ export default function RagDeploymentPage() {
       <p className="text-sm text-gray-600 mb-6 text-center">
         Please upload a file in PDF format (size limit 16MB)
       </p>
+      <p className="text-sm text-gray-600 mb-6 text-center">
+        The program will read the PDF, break it into chunks, and create a vector database for retrieval using a special index (FAISS).<br />
+      </p>
 
-      <div className="flex justify-center gap-4 mb-6">
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={handleFileChange}
-          className="rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={handleUpload}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
-          type="button"
-        >
-          Upload
-        </button>
+      <div className="flex flex-col items-center gap-2 mb-6">
+        {uploadMessage && (
+          <div
+            className={`text-sm font-medium ${
+              uploadMessage.toLowerCase().includes("successful")
+                ? "text-green-600"
+                : "text-red-600"
+            }`}
+          >
+            {uploadMessage}
+          </div>
+        )}
+        <div className="flex justify-center gap-4 w-full">
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={handleFileChange}
+            className="rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            onClick={handleUpload}
+            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
+            type="button"
+          >
+            Upload
+          </button>
+        </div>
       </div>
 
       <div className="flex justify-center mb-8">
