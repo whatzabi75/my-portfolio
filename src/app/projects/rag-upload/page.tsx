@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function RagDeploymentPage() {
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
   const [file, setFile] = useState<File | null>(null);
   const [isTraining, setIsTraining] = useState(false);
   const [isTrained, setIsTrained] = useState(false);
@@ -47,7 +48,7 @@ export default function RagDeploymentPage() {
       const formData = new FormData();
       formData.append("file", file);
       // Replace the URL below with your Flask backend endpoint
-      const response = await fetch("http://backend-code-production-77c7.up.railway.app/rag-upload", {
+        const response = await fetch(`${BACKEND_URL}/rag-upload`, {
         method: "POST",
         body: formData,
         // Do not set Content-Type header; browser will set it for multipart/form-data
@@ -74,7 +75,7 @@ export default function RagDeploymentPage() {
 
     try {
       // Replace the URL below with your Flask backend endpoint
-      const response = await fetch("http://backend-code-production-77c7.up.railway.app/rag-chat", {
+        const response = await fetch(`${BACKEND_URL}/rag-chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
