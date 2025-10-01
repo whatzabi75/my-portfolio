@@ -22,7 +22,7 @@ export default function ProjectsPage() {
       description: "A Python tool that trains a RAG-based chatbot using custom documents. It leverages LangChain for document processing and integrates with a Hugging Face LLM for generating responses, all presented in a Next.js frontend.",
       tech: ["Python", "Flask", "PyPDF2", "VectorDB", "GPT-4o-mini", "LangChain retriever"],
       image: "/rag-deployment.jpg",
-      link: "/projects/rag-deployment",
+      link: "/projects/rag-upload",
     },
   ];
 
