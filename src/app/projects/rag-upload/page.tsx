@@ -116,7 +116,8 @@ export default function RagDeploymentPage() {
         Please upload a file in PDF format (size limit 16MB)
       </p>
       <p className="text-sm text-gray-600 mb-6 text-center">
-        The program will read the PDF, break it into chunks, and create a vector database for retrieval using a special index (FAISS).<br />
+        The program will read the PDF, break it into chunks, and create a vector database for retrieval using a special index (FAISS). <br></br>Then it will train a model based on the content of the file. After training, you can ask questions related to the content of the file. 
+        <br></br>Note: The training process may take several minutes depending on the size of the file.
       </p>
 
       <div className="flex flex-col items-center gap-2 mb-6">
