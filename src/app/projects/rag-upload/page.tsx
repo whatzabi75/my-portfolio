@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function RagDeploymentPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -58,10 +58,11 @@ export default function RagDeploymentPage() {
       }
       setIsTraining(false);
       setIsTrained(true);
-    } catch (error: any) {
+    } catch (error: unknown) {
       setIsTraining(false);
       setIsTrained(false);
-      alert(error.message || "An error occurred during upload.");
+      const errMsg = error instanceof Error ? error.message : "An error occurred during upload.";
+      alert(errMsg);
     }
   };
 
@@ -91,11 +92,11 @@ export default function RagDeploymentPage() {
         newHistory[newHistory.length - 1].bot = answer;
         return newHistory;
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       setChatHistory((prev) => {
         const newHistory = [...prev];
         newHistory[newHistory.length - 1].bot =
-          error.message || "An error occurred while fetching the answer.";
+          error instanceof Error ? error.message : "An error occurred while fetching the answer.";
         return newHistory;
       });
     }
