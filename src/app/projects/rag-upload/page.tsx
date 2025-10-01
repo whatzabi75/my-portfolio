@@ -74,7 +74,7 @@ export default function RagDeploymentPage() {
 
     try {
       // Replace the URL below with your Flask backend endpoint
-      const response = await fetch("http://localhost:5000/rag-chat", {
+      const response = await fetch("http://backend-code-production-77c7.up.railway.app/rag-chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
