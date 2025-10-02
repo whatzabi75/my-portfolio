@@ -43,7 +43,7 @@ export default function AboutPage() {
       </div>
 
       {/* Skills & Career Highlights in two-column grid */}
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-8">
         {/* Career Highlights */}
         <div>
           <h2 className="mb-4 text-2xl font-semibold">Career Highlights</h2>
@@ -94,7 +94,7 @@ export default function AboutPage() {
         </div>
 
         {/* Education*/}
-        <div className="md:col-start-2">
+        <div className="md:col-start-2 mt-0">
           <h2 className="mb-4 text-2xl font-semibold">Education</h2>
           <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {[
