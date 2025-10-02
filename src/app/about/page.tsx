@@ -69,50 +69,53 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        {/* Skills */}
-        <div>
-          <h2 className="mb-4 text-2xl font-semibold">Skills</h2>
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {[
-              "Product Strategy & Roadmapping",
-              "AI & Machine Learning Applications",
-              "Leadership & People Management",
-              "Portfolio & P&L Ownership",
-              "Go-to-Market Strategy & Business Development",
-              "Agile & Cross-Functional Team Leadership",
-              "Stakeholder & Executive Communication",
-              "Data-Driven Decision Making",
-            ].map((item) => (
-              <li
-                key={item}
-                className="rounded-lg bg-blue-600 text-white px-4 py-3 text-sm font-medium shadow hover:bg-blue-700 transition"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Skills + Education */}
+        <div className="flex flex-col space-y-8">
+          {/* Skills */}
+          <div>
+            <h2 className="mb-4 text-2xl font-semibold">Skills</h2>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[
+                "Product Strategy & Roadmapping",
+                "AI & Machine Learning Applications",
+                "Leadership & People Management",
+                "Portfolio & P&L Ownership",
+                "Go-to-Market Strategy & Business Development",
+                "Agile & Cross-Functional Team Leadership",
+                "Stakeholder & Executive Communication",
+                "Data-Driven Decision Making",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="rounded-lg bg-blue-600 text-white px-4 py-3 text-sm font-medium shadow hover:bg-blue-700 transition"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Education*/}
-        <div className="md:col-start-2 mt-0">
-          <h2 className="mb-4 text-2xl font-semibold">Education</h2>
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {[
-              "Master Business Administration (MBA)",
-              "BsC Communication Technology",
-              "Salesforce Certified Agentforce Specialist",
-              "Certificate Oxford University AI Program",
-              "Mini-Master Digital Product Mangement",
-              "Certified Scaled Agile Product Manager",
-            ].map((item) => (
-              <li
-                key={item}
-                className="rounded-lg border bg-gray-100 px-4 py-4"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+          {/* Education*/}
+          <div>
+            <h2 className="mb-4 text-2xl font-semibold">Education</h2>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[
+                "Master Business Administration (MBA)",
+                "BsC Communication Technology",
+                "Salesforce Certified Agentforce Specialist",
+                "Certificate Oxford University AI Program",
+                "Mini-Master Digital Product Mangement",
+                "Certified Scaled Agile Product Manager",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="rounded-lg border bg-gray-100 px-4 py-4"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
