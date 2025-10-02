@@ -49,16 +49,16 @@ export default function AboutPage() {
           <h2 className="mb-4 text-2xl font-semibold">Career Highlights</h2>
           <ul className="space-y-4">
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🚀 Prototyped and delivered <strong>AI-powered solutions</strong> (chatbots, recommendation engines) driving efficiency gains.
+              🚀 Prototyped and delivered <strong>AI-powered solutions</strong> (Agents, recommendation engines) driving efficiency gains.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              💰 Owned <strong>portfolio &amp; P&amp;L</strong>, managing multimillion-euro budgets and profitable growth.
+              💰 Owned <strong>portfolio &amp; P&amp;L</strong>, managed multimillion-dollar budgets and profitable growth.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🧭 Led <strong>global product transformation</strong> (Salesforce Help Portal) impacting thousands of users.
+              🧭 Led <strong>global product transformation</strong> impacting thousands of users (Salesforce Help Portal).
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              👥 <strong>Managed and mentored teams</strong> of Product Owners to deliver complex programs on time.
+              👥 <strong>Managed and mentored teams</strong> of Product Owners to deliver complex AI programs.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
               🌍 Executed <strong>go-to-market strategies</strong> for new products, driving adoption across markets.
