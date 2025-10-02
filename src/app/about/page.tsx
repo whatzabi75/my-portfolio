@@ -94,7 +94,7 @@ export default function AboutPage() {
         </div>
 
         {/* Education*/}
-        <div>
+        <div className="md:col-start-2">
           <h2 className="mb-4 text-2xl font-semibold">Education</h2>
           <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {[
