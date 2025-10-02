@@ -92,6 +92,28 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
+
+        {/* Education*/}
+        <div>
+          <h2 className="mb-4 text-2xl font-semibold">Education</h2>
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {[
+              "Master Business Administration (MBA)",
+              "BsC Communication Technology",
+              "Salesforce Certified Agentforce Specialist",
+              "Certificate Oxford University AI Program",
+              "Mini-Master Digital Product Mangement",
+              "Certified Scaled Agile Product Manager",
+            ].map((item) => (
+              <li
+                key={item}
+                className="rounded-lg border bg-gray-100 px-4 py-4"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
