@@ -43,8 +43,8 @@ export default function EmotionDetectorPage() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <label className="text-sm text-gray-600 mb-6 text-center">
-          This tool allows the user to ask the LLM a question and manipulate the LLMs temperature afterwards. An LLMs temperature constrols the probability distribtuion of the output.<br></br>
-          After repeating the same question, the tool will calculate the delta between both responses. <br></br>I might add a RAG and limit the LLMs data source in order to reflect a real-life use case in relation to providing repeatable answers in a customer service environment.
+        This tool lets users ask an LLM a question and then adjust the model temperature parameter, which controls the probability distribution of its output (i.e., how deterministic vs. creative the responses are).<br></br>By repeating the same question, the tool calculates the differences between responses at various temperature settings. 
+        <br></br>I may extend this project with Retrieval-Augmented Generation (RAG) to limit the LLM data sources, reflecting a more realistic customer service use case where consistency and repeatability are critical.
 <br></br>
 <br></br>
           Please ask your first question.
@@ -54,7 +54,7 @@ export default function EmotionDetectorPage() {
           rows={4}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder="Type a sentence and detect emotions..."
+          placeholder="Type a question..."
           required
         />
 
