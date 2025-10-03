@@ -38,12 +38,12 @@ export default function EmotionDetectorPage() {
   return (
     <section className="max-w-2xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-bold mb-6 text-center">
-        Emotion Detector
+        Probability Distribution
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <label className="text-sm text-gray-600 mb-6 text-center">
-          This tool allows the user to ask the LLM a quesiton and manipulate the LLMs temperature afterwards. An LLMs temperature constrols the probability distribtuion of the output.<br></br>
+          This tool allows the user to ask the LLM a question and manipulate the LLMs temperature afterwards. An LLMs temperature constrols the probability distribtuion of the output.<br></br>
           After repeating the same question, the tool will calculate the delta between both responses. <br></br>I might add a RAG and limit the LLMs data source in order to reflect a real-life use case in relation to providing repeatable answers in a customer service environment.
 <br></br>
 <br></br>
@@ -60,10 +60,10 @@ export default function EmotionDetectorPage() {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled
           className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50"
         >
-          {loading ? "Analyzing..." : "Submit"}
+          Submit
         </button>
       </form>
 
