@@ -1,99 +1,166 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-type EmotionResult = {
-  dominant_emotion: string;
-  scores: Record<string, number>;
-  recommendation?: string; // optional
-};
+interface ResponseData {
+  temperature: number;
+  response: string;
+  expected_answer?: string | null;
+  similarity?: number | null;
+}
 
-export default function EmotionDetectorPage() {
-  const [inputText, setInputText] = useState("");
-  const [result, setResult] = useState<EmotionResult | null>(null);
+export default function TemperatureDemo() {
+  const [question, setQuestion] = useState("");
+  const [temperature, setTemperature] = useState(0.7);
+  const [responses, setResponses] = useState<ResponseData[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    if (!question.trim()) return;
     setLoading(true);
-    setResult(null);
 
     try {
-      const response = await fetch("https://backend-code-production-77c7.up.railway.app/analyze", {
+      const res = await fetch("/api/temperature", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: inputText }),
+        body: JSON.stringify({ question, temperature }),
       });
-
-      const data = await response.json();
-      setResult(data);
+      const data = await res.json();
+      setResponses((prev) => [data, ...prev]);
     } catch (error) {
       console.error(error);
-      setResult(null);
     } finally {
       setLoading(false);
     }
   };
 
+  const badgeColor = (temp: number) => {
+    if (temp > 0.7) return "bg-orange-100 text-orange-700 border-orange-300";
+    if (temp > 0.3) return "bg-yellow-100 text-yellow-700 border-yellow-300";
+    return "bg-green-100 text-green-700 border-green-300";
+  };
+
+  const badgeLabel = (temp: number) => {
+    if (temp > 0.7) return "Creative";
+    if (temp > 0.3) return "Balanced";
+    return "Stable";
+  };
+
+  const sampleQuestions = [
+    "How do I reset my password?",
+    "How do I update my billing address?",
+    "How do I cancel my subscription?",
+  ];
+
   return (
-    <section className="max-w-2xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        Probability Distribution
-      </h1>
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
+      <div className="max-w-3xl w-full bg-white shadow-md rounded-2xl p-6">
+        <h1 className="text-2xl font-semibold text-gray-800 mb-1">
+          Temperature Consistency Demo
+        </h1>
+        <p className="text-gray-600 mb-6">
+          See how an LLM’s responses evolve from creative to precise as you lower the
+          temperature. Try one of these sample questions:
+        </p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {sampleQuestions.map((q) => (
+            <button
+              key={q}
+              onClick={() => setQuestion(q)}
+              className="px-3 py-1 bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm rounded-full transition"
+            >
+              {q}
+            </button>
+          ))}
+        </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="text-sm text-gray-600 mb-6 text-center">
-        This tool lets users ask an LLM a question and then adjust the model temperature parameter, which controls the probability distribution of its output (i.e., how deterministic vs. creative the responses are).<br></br>By repeating the same question, the tool calculates the differences between responses at various temperature settings. 
-        <br></br>I may extend this project with Retrieval-Augmented Generation (RAG) to limit the LLM data sources, reflecting a more realistic customer service use case where consistency and repeatability are critical.
-<br></br>
-<br></br>
-          Please ask your first question.
-        </label>
-        <textarea
-          className="w-full rounded border px-4 py-2 text-gray-900 shadow-sm focus:ring-2 focus:ring-blue-500"
-          rows={4}
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Type a question..."
-          required
-        />
+        <div className="flex gap-2 mb-4">
+          <input
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="Ask a support-related question..."
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition disabled:opacity-50"
+          >
+            {loading ? "Loading..." : "Submit"}
+          </button>
+        </div>
 
-        <button
-          type="submit"
-          disabled
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50"
-        >
-          Submit
-        </button>
-      </form>
-
-      {result && (
-        <div className="mt-6 p-4 border rounded bg-gray-50">
-          <h2 className="text-2xl font-semibold text-blue-600 mb-3">
-            Dominant Emotion: {result.dominant_emotion ?? "—"}
-          </h2>
-
-          {result.recommendation && (
-            <p className="text-lg font-medium text-gray-800 mb-4">
-              📌 Recommendation: {result.recommendation}
-            </p>
-          )}
-          <div className="mt-4">
-            <p className="text-lg font-medium text-gray-800 mb-2">Detailed Value Breakdown:</p>
-            <ul className="text-lg font-medium text-gray-800 list-disc pl-6 space-y-1">
-              {Object.entries(result.scores)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 10)
-                .map(([label, score]) => (
-                  <li key={label} className="text-gray-800">
-                    {label.charAt(0).toUpperCase() + label.slice(1)}:{" "}
-                    {Number(score).toFixed(3)}
-                  </li>
-                ))}
-            </ul>
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Temperature: {temperature.toFixed(1)}
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={temperature}
+            onChange={(e) => setTemperature(parseFloat(e.target.value))}
+            className="w-full accent-blue-600"
+          />
+          <div className="flex justify-between text-xs text-gray-500">
+            <span>0 (Deterministic)</span>
+            <span>1 (Creative)</span>
           </div>
         </div>
-      )}
-    </section>
+
+        {/* Expected Answer */}
+        {responses.length > 0 && responses[0].expected_answer && (
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-6">
+            <p className="text-sm font-semibold text-gray-700">Expected Answer:</p>
+            <p className="text-gray-800 text-sm mt-1">
+              {responses[0].expected_answer}
+            </p>
+          </div>
+        )}
+
+        {/* Response Stack */}
+        <div className="space-y-3">
+          <AnimatePresence>
+            {responses.map((res, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className={`border rounded-2xl p-4 shadow-sm ${badgeColor(
+                  res.temperature
+                )}`}
+              >
+                <div className="flex justify-between items-center mb-1">
+                  <span className="font-medium">
+                    Temperature: {res.temperature.toFixed(1)}
+                  </span>
+                  <span className="text-sm font-semibold">
+                    {badgeLabel(res.temperature)}
+                  </span>
+                </div>
+                <p className="text-gray-800 whitespace-pre-line">{res.response}</p>
+                {res.similarity !== null && (
+                  <p className="text-sm text-gray-700 mt-2">
+                    Match Score:{" "}
+                    <span className="font-semibold">
+                      {res.similarity?.toFixed(1)}%
+                    </span>
+                  </p>
+                )}
+                {res.similarity === null && (
+                  <p className="text-sm text-gray-500 mt-2 italic">
+                    No reference available — free-form response.
+                  </p>
+                )}
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
   );
 }
