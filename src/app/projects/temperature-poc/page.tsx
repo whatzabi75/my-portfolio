@@ -21,11 +21,13 @@ export default function TemperatureDemo() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/temperature", {
+      const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://127.0.0.1:5000";
+
+      const res = await fetch(`${BACKEND_URL}/api/temperature`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question, temperature }),
-      });
+    });
       const data = await res.json();
       setResponses((prev) => [data, ...prev]);
     } catch (error) {
