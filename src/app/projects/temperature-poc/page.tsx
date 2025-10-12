@@ -64,7 +64,7 @@ export default function TemperatureDemo() {
         </h1>
         <p className="text-gray-600 mb-6">
           See how an LLM’s responses evolve from creative to precise as you
-          lower the temperature. Try one of these sample questions:
+          lower the temperature. Try one of these sample questions (please type exactly as shown):
         </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
