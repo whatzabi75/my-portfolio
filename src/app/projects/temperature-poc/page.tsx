@@ -64,7 +64,7 @@ export default function TemperatureDemo() {
         </h1>
         <p className="text-gray-600 mb-6">
           See how an LLM’s responses evolve from creative to precise as you
-          lower the temperature. Try one of these sample questions (please type exactly as shown):
+          lower the temperature. Try one of these sample questions and click Submit (please type exactly as shown). <br></br>After the first response has been generated, feel free to adjust the temperature slider and resubmit to see how the answer changes.
         </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
