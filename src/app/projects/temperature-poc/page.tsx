@@ -16,18 +16,19 @@ export default function TemperatureDemo() {
   const [responses, setResponses] = useState<ResponseData[]>([]);
   const [loading, setLoading] = useState(false);
 
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://127.0.0.1:5000";
+
   const handleSubmit = async () => {
     if (!question.trim()) return;
     setLoading(true);
 
     try {
-      const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://127.0.0.1:5000";
-
       const res = await fetch(`${BACKEND_URL}/api/temperature`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question, temperature }),
-    });
+      });
       const data = await res.json();
       setResponses((prev) => [data, ...prev]);
     } catch (error) {
@@ -50,10 +51,10 @@ export default function TemperatureDemo() {
   };
 
   const sampleQuestions = [
-    "How do I reset my password?",
-    "How do I update my billing address?",
-    "How do I cancel my subscription?",
-  ];
+    "What is Meeting Digest?",
+    "How can I use Meeting Digest?",
+    "How can Meeting Digest drive value?",
+  ]; 
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
@@ -62,9 +63,10 @@ export default function TemperatureDemo() {
           Temperature Consistency Demo
         </h1>
         <p className="text-gray-600 mb-6">
-          See how an LLM’s responses evolve from creative to precise as you lower the
-          temperature. Try one of these sample questions:
+          See how an LLM’s responses evolve from creative to precise as you
+          lower the temperature. Try one of these sample questions:
         </p>
+
         <div className="flex flex-wrap gap-2 mb-4">
           {sampleQuestions.map((q) => (
             <button
@@ -112,17 +114,19 @@ export default function TemperatureDemo() {
           </div>
         </div>
 
-        {/* Expected Answer */}
+        {/* ✅ Ground Truth Section */}
         {responses.length > 0 && responses[0].expected_answer && (
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-6">
-            <p className="text-sm font-semibold text-gray-700">Expected Answer:</p>
-            <p className="text-gray-800 text-sm mt-1">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
+            <p className="text-sm font-semibold text-blue-700">
+              Ground Truth Answer:
+            </p>
+            <p className="text-blue-800 text-sm mt-1">
               {responses[0].expected_answer}
             </p>
           </div>
         )}
 
-        {/* Response Stack */}
+        {/* ✅ Response Stack */}
         <div className="space-y-3">
           <AnimatePresence>
             {responses.map((res, idx) => (
@@ -144,7 +148,10 @@ export default function TemperatureDemo() {
                     {badgeLabel(res.temperature)}
                   </span>
                 </div>
-                <p className="text-gray-800 whitespace-pre-line">{res.response}</p>
+                <p className="text-gray-800 whitespace-pre-line">
+                  {res.response}
+                </p>
+
                 {res.similarity !== null && (
                   <p className="text-sm text-gray-700 mt-2">
                     Match Score:{" "}
@@ -153,6 +160,7 @@ export default function TemperatureDemo() {
                     </span>
                   </p>
                 )}
+
                 {res.similarity === null && (
                   <p className="text-sm text-gray-500 mt-2 italic">
                     No reference available — free-form response.

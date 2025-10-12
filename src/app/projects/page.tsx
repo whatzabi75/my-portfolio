@@ -28,7 +28,7 @@ export default function ProjectsPage() {
       title: "Stochastic vs. Deterministic Output",
       description: "A Proof of Concept that allows modeleing the LLMs temperature to minimize the delta between two outputs. Use case: Support Agent recommendation consistency!",
       tech: ["Python", "Flask", "GPT-3.5-turbo"],
-      image: "/under-construction.jpg",
+      image: "/temperature-poc.jpg",
       link: "/projects/temperature-poc",
     },
   ];
