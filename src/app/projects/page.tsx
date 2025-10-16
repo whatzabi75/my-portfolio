@@ -20,14 +20,14 @@ export default function ProjectsPage() {
     {
       title: "Custom LLM Chatbot",
       description: "A Python tool that trains a RAG-based chatbot using custom documents. It leverages LangChain for document processing and integrates with a Hugging Face LLM for generating responses, all presented in a Next.js frontend.",
-      tech: ["Python", "Flask", "PyPDF2", "VectorDB", "GPT-4o-mini", "LangChain retriever"],
+      tech: ["Python", "Flask", "PyPDF2", "FAISS Vector Index library", "GPT-4o-mini", "LangChain retriever"],
       image: "/rag-deployment.jpg",
       link: "/projects/rag-upload",
     },
     {
       title: "Stochastic vs. Deterministic Output",
       description: "A Proof of Concept that allows modeleing the LLMs temperature to minimize the delta between two outputs. Use case: Support Agent recommendation consistency!",
-      tech: ["Python", "Flask", "GPT-3.5-turbo"],
+      tech: ["Python", "Flask", "GPT-4o-mini", "Next.js", "TailwindCSS", "all-MiniLM-L6-v2", "Docker"],
       image: "/temperature-poc.jpg",
       link: "/projects/temperature-poc",
     },

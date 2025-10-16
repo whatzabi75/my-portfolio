@@ -64,10 +64,10 @@ export default function AboutPage() {
               🌍 Executed <strong>go-to-market strategies</strong> for new products, driving adoption across markets.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🌍 Launched products <strong>in new geographies</strong> and expanded sales channels.
+              🌐 Launched products <strong>in new geographies</strong> and expanded sales channels.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🤝 <strong>Increased profitability</strong> by consolidating portfolios and focusing on key markets.
+              📈 <strong>Increased profitability</strong> by consolidating portfolios and focusing on key markets.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
               🤝 Partnered with <strong>executives and stakeholders</strong> to align strategy and secure investment.
