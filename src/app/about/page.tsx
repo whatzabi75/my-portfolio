@@ -24,7 +24,7 @@ export default function AboutPage() {
         <div className="md:col-span-2 space-y-4">
           <h1 className="text-3xl font-bold">About Me</h1>
           <p className="text-lg leading-relaxed text-gray-800">
-            I’m a <strong>Senior Product Manager</strong> with deep experience in
+            I’m a <strong>Senior Product Leader</strong> with deep experience in
             building software products and an active focus on{" "}
             <strong>AI-powered solutions</strong>. I lead a team of Product Owners,
             align stakeholders, and ship measurable outcomes—balancing strategy,
@@ -69,7 +69,7 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        {/* Skills + Education */}
+        {/* Skills + Education + Certificates*/}
         <div className="flex flex-col space-y-8">
           {/* Skills */}
           <div>
@@ -101,11 +101,7 @@ export default function AboutPage() {
             <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[
                 "Master Business Administration (MBA)",
-                "BsC Communication Technology",
-                "Salesforce Certified Agentforce Specialist",
-                "Certificate Oxford University AI Program",
-                "Mini-Master Digital Product Mangement",
-                "Certified Scaled Agile Product Manager",
+                "B.Sc. Communication Technology",
               ].map((item) => (
                 <li
                   key={item}
@@ -116,6 +112,29 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
+          
+          {/* Certificates*/}
+          <div>
+            <h2 className="mb-4 text-2xl font-semibold">Certificates</h2>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[
+                "Salesforce Certified Agentforce Specialist",
+                "Certificate Oxford University AI Program",
+                "Mini-Master Digital Product Mangement",
+                "Certified Scaled Agile Product Manager",
+                "IBM AI Developer Professional Certificate",
+                "Dare to Lead Leadership Program",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="rounded-lg border bg-gray-100 px-4 py-4"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>
