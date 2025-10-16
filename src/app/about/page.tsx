@@ -55,13 +55,19 @@ export default function AboutPage() {
               💰 Owned <strong>portfolio &amp; P&amp;L</strong>, managed multimillion-dollar budgets and profitable growth.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
-              🧭 Led <strong>global product transformation</strong> impacting thousands of users (Salesforce Help Portal).
+              🧭 Led <strong>global product transformation</strong> impacting thousands of users.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
               👥 <strong>Managed and mentored teams</strong> of Product Owners to deliver complex AI programs.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
               🌍 Executed <strong>go-to-market strategies</strong> for new products, driving adoption across markets.
+            </li>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              🌍 Launched products <strong>in new geographies</strong> and expanded sales channels.
+            </li>
+            <li className="rounded-lg border bg-gray-100 px-4 py-4">
+              🤝 <strong>Increased profitability</strong> by consolidating portfolios and focusing on key markets.
             </li>
             <li className="rounded-lg border bg-gray-100 px-4 py-4">
               🤝 Partnered with <strong>executives and stakeholders</strong> to align strategy and secure investment.
@@ -119,9 +125,9 @@ export default function AboutPage() {
             <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[
                 "Salesforce Certified Agentforce Specialist",
-                "Certificate Oxford University AI Program",
+                "Oxford Artificial Intelligence Program",
                 "Mini-Master Digital Product Mangement",
-                "Certified Scaled Agile Product Manager",
+                "Certified SAFe Agile Product Manager",
                 "IBM AI Developer Professional Certificate",
                 "Dare to Lead Leadership Program",
               ].map((item) => (
