@@ -64,8 +64,12 @@ export default function TemperatureDemo() {
         </h1>
         <p className="text-gray-600 mb-6">
           See how an LLM’s responses evolve from creative to precise as you
-          lower the temperature. Try one of these sample questions and click Submit (please type exactly as shown). <br></br>After the first response has been generated, feel free to adjust the temperature slider and resubmit to see how the answer changes.
-          <br></br>[Update: Oct 12th] This PoC is still in progress. So far the temperature effect is less than expected. I might need to add RAG.
+          lower the temperature. Try one of these sample questions and click Submit (please type exactly as shown). 
+          <br></br>After the first response has been generated, feel free to adjust the temperature slider and resubmit to see how the answer changes.
+        </p>
+
+        <p className="text-gray-600 mb-6">
+          <em>[Update: Oct 12th] This PoC is still in progress. The expected effect of lowering the temperature is that the responses become more focused and aligned with the ground truth answer. However, due to the inherent randomness in LLM outputs, this effect may not always be clearly observable in every instance. I am actively working on refining the model and prompt engineering to better demonstrate this behavior. Thank you for your understanding and patience as I continue to improve this demo.</em>
         </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
