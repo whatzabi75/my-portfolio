@@ -7,7 +7,7 @@ export default function HomePage() {
       <main className="flex flex-col items-center justify-center flex-1 text-center px-6">
         <div className="max-w-3xl">
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-            Senior Product Manager <br />
+            Senior Product Leader <br />
             <span className="text-blue-600">& AI Builder</span>
           </h2>
           <p className="text-lg text-gray-700 mb-8">
